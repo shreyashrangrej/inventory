@@ -1,8 +1,9 @@
 import { Button } from '@mantine/core'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link';
+import { CustomNextPage } from '../../types/CustomNextPage';
 
-export default function Home() {
+const Home: CustomNextPage = () => {
   const {data, status} = useSession();
 
   return (
@@ -11,6 +12,9 @@ export default function Home() {
       {status === 'authenticated' && (
         <Button onClick={() => signOut()}>SIGN OUT</Button>
       )}
+      <Link href='/catagories'>PROTECTED PAGE</Link>
     </div>
   )
 }
+
+export default Home
